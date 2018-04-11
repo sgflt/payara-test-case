@@ -1,0 +1,120 @@
+<project
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"
+>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>cz.i</groupId>
+  <artifactId>test-case</artifactId>
+  <packaging>ear</packaging>
+  <name>Test case EAR</name>
+  <parent>
+    <groupId>cz.i</groupId>
+    <artifactId>test-case-pom</artifactId>
+    <version>0</version>
+    <relativePath>..</relativePath>
+  </parent>
+  <dependencies>
+
+    <!-- Must be before EGF to have logs from tests!!! -->
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>jcl-over-slf4j</artifactId>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-log4j12</artifactId>
+      <scope>compile</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>cz.i</groupId>
+      <artifactId>core</artifactId>
+      <type>ejb</type>
+    </dependency>
+
+    <dependency>
+      <groupId>cz.i</groupId>
+      <artifactId>static</artifactId>
+      <version>${project.version}</version>
+      <type>war</type>
+    </dependency>
+    <dependency>
+      <groupId>cz.i</groupId>
+      <artifactId>bug</artifactId>
+      <version>${project.version}</version>
+      <type>war</type>
+    </dependency>
+    <dependency>
+      <groupId>cz.i</groupId>
+      <artifactId>login</artifactId>
+      <version>${project.version}</version>
+      <type>war</type>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-ear-plugin</artifactId>
+        <configuration>
+          <displayName>${project.artifactId}</displayName>
+          <description>${project.description}</description>
+          <defaultLibBundleDir>lib</defaultLibBundleDir>
+          <generateModuleId>true</generateModuleId>
+          <initializeInOrder>true</initializeInOrder>
+          <version>7</version>
+          <earSourceExcludes>${project.build.resources}/application.xml</earSourceExcludes>
+          <archive>
+            <manifest>
+              <addClasspath>true</addClasspath>
+            </manifest>
+          </archive>
+          <modules>
+            <ejbModule>
+              <groupId>cz.i</groupId>
+              <artifactId>core</artifactId>
+              <bundleFileName>core.jar</bundleFileName>
+              <bundleDir>/</bundleDir>
+              <unpack>false</unpack>
+            </ejbModule>
+            <webModule>
+              <groupId>cz.i</groupId>
+              <artifactId>static</artifactId>
+              <bundleFileName>static.war</bundleFileName>
+              <bundleDir>/</bundleDir>
+              <contextRoot>/</contextRoot>
+            </webModule>
+            <webModule>
+              <groupId>cz.i</groupId>
+              <artifactId>login</artifactId>
+              <bundleFileName>login.war</bundleFileName>
+              <bundleDir>/</bundleDir>
+              <contextRoot>login</contextRoot>
+            </webModule>
+            <webModule>
+              <groupId>cz.i</groupId>
+              <artifactId>bug</artifactId>
+              <bundleFileName>bug.war</bundleFileName>
+              <bundleDir>/</bundleDir>
+              <contextRoot>bug</contextRoot>
+            </webModule>
+          </modules>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
+
