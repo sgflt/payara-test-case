@@ -14,6 +14,11 @@
     <version>0</version>
     <relativePath>..</relativePath>
   </parent>
+
+  <properties>
+    <java.version>1.8</java.version>
+  </properties>
+
   <dependencies>
 
     <!-- Must be before EGF to have logs from tests!!! -->
@@ -61,6 +66,19 @@
       <artifactId>login</artifactId>
       <version>${project.version}</version>
       <type>war</type>
+    </dependency>
+
+    <dependency>
+      <groupId>fish.payara.extras</groupId>
+      <artifactId>payara-embedded-all</artifactId>
+      <version>5.2020.4</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+      <scope>test</scope>
     </dependency>
   </dependencies>
 
@@ -113,8 +131,60 @@
           </modules>
         </configuration>
       </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+        <configuration>
+          <fork>true</fork>
+          <source>${java.version}</source>
+          <target>${java.version}</target>
+          <verbose>true</verbose>
+          <parameters>true</parameters>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>testCompile</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-failsafe-plugin</artifactId>
+        <version>2.22.1</version>
+        <configuration>
+          <includes>
+            <include>**/*Test.java</include>
+          </includes>
+        </configuration>
+        <executions>
+          <execution>
+            <id>integration-test</id>
+            <goals>
+              <goal>integration-test</goal>
+            </goals>
+            <configuration>
+              <summaryFile>${project.build.directory}/failsafe-summary-itest.xml</summaryFile>
+            </configuration>
+          </execution>
+          <execution>
+            <id>verify-itest</id>
+            <goals>
+              <goal>verify</goal>
+            </goals>
+            <configuration>
+              <summaryFiles>
+                <summaryFile>${project.build.directory}/failsafe-summary-itest.xml</summaryFile>
+              </summaryFiles>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
-
 </project>
 
