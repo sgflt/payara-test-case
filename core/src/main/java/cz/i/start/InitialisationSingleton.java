@@ -2,27 +2,24 @@ package cz.i.start;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-import javax.ejb.Schedule;
-import javax.ejb.Singleton;
-import javax.ejb.Startup;
-import javax.ejb.TransactionManagement;
-import javax.ejb.TransactionManagementType;
+import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.context.Initialized;
+import javax.enterprise.event.Observes;
+import javax.inject.Singleton;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import cz.i.cache.CodebookCacheInitializer;
 
-@Startup
-@Singleton(name = "InitializationSingleton")
-@TransactionManagement(TransactionManagementType.BEAN)
+@Singleton
 public class InitialisationSingleton {
 
   private static final Logger LOG = LoggerFactory.getLogger(InitialisationSingleton.class);
 
 
   @PostConstruct
-  public void init() {
+  public void init(@Observes @Initialized(ApplicationScoped.class) final Object event) {
     // FIXME comment this line for disabling hazelcast.
     CodebookCacheInitializer.reinitialize();
   }
@@ -33,9 +30,4 @@ public class InitialisationSingleton {
     LOG.debug("destroy()");
   }
 
-
-  @Schedule(second = "0", minute = "*", hour = "*", persistent = false)
-  public void reconfigure() {
-    LOG.debug("reconfigure()");
-  }
 }
