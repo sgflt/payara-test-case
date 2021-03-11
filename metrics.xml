@@ -1,0 +1,201 @@
+<config><vendor>    <metadata>
+      <tags>
+        <tag>
+          <name>pool</name>
+          <value>%s</value>
+        </tag>
+      </tags>
+      <name>jdbc.connection.pool.numconnused</name>
+      <mbean>amx:pp=/mon/server-mon[server],type=jdbc-connection-pool-mon,name=resources/%s/numconnused#current</mbean>
+      <type>gauge</type>
+      <unit>none</unit>
+      <displayName>numconnusedpool</displayName>
+      <description>The total number of already used connections.</description>
+    </metadata>
+    <metadata>
+      <tags>
+        <tag>
+          <name>pool</name>
+          <value>%s</value>
+        </tag>
+      </tags>
+      <name>jdbc.connection.pool.numconnused.max</name>
+      <mbean>amx:pp=/mon/server-mon[server],type=jdbc-connection-pool-mon,name=resources/%s/numconnused#highWaterMark</mbean>
+      <type>gauge</type>
+      <unit>none</unit>
+      <displayName>numconnusedpoolmax</displayName>
+      <description>The maximum number of used connections.</description>
+    </metadata> 
+    <metadata>
+      <tags>
+        <tag>
+          <name>pool</name>
+          <value>%s</value>
+        </tag>
+      </tags>
+      <name>jdbc.connection.pool.numconnfree</name>
+      <mbean>amx:pp=/mon/server-mon[server],type=jdbc-connection-pool-mon,name=resources/%s/numconnfree#current</mbean>
+      <type>gauge</type>
+      <unit>none</unit>
+      <displayName>numconnfreePool</displayName>
+      <description>The total number of free connections in the pool as of the last sampling.</description>
+    </metadata> 
+
+    <metadata>
+      <tags>
+        <tag>
+          <name>module</name>
+          <value>%s</value>
+        </tag>
+      </tags>
+      <name>session.module.active.count</name>
+      <mbean>amx:pp=/mon/server-mon[server],type=session-mon,name=test-app-0/%s/server/activesessionscurrent#current</mbean>
+      <type>gauge</type>
+      <unit>none</unit>
+      <displayName>Count of active sessions</displayName>
+      <description>The total of active sessions</description>
+    </metadata>
+    <metadata>
+      <tags>
+        <tag>
+          <name>module</name>
+          <value>%s</value>
+        </tag>
+      </tags>
+      <name>session.module.activated.count</name>
+      <mbean>amx:pp=/mon/server-mon[server],type=session-mon,name=test-app-0/%s/server/activatedsessionstotal#count</mbean>
+      <type>counter</type>
+      <unit>none</unit>
+      <displayName>Count of activated sessions</displayName>
+      <description>Total number of sessions ever activated</description>
+    </metadata>
+    <metadata>
+      <tags>
+        <tag>
+          <name>module</name>
+          <value>%s</value>
+        </tag>
+      </tags>
+      <name>session.module.expired.count</name>
+      <mbean>amx:pp=/mon/server-mon[server],type=session-mon,name=test-app-0/%s/server/expiredsessionstotal#count</mbean>
+      <type>counter</type>
+      <unit>none</unit>
+      <displayName>Count of expired sessions</displayName>
+      <description>Total number of sessions ever expired</description>
+    </metadata>
+    <metadata>
+      <tags>
+        <tag>
+          <name>module</name>
+          <value>%s</value>
+        </tag>
+      </tags>
+      <name>session.module.rejected.count</name>
+      <mbean>amx:pp=/mon/server-mon[server],type=session-mon,name=test-app-0/%s/server/rejectedsessionstotal#count</mbean>
+      <type>counter</type>
+      <unit>none</unit>
+      <displayName>Count of active sessions</displayName>
+      <description>The total of rejected sessions</description>
+    </metadata>
+
+    <metadata>
+      <tags>
+        <tag>
+          <name>module</name>
+          <value>%s</value>
+        </tag>
+      </tags>
+      <name>http.server.requests.count</name>
+      <mbean>amx:pp=/mon/server-mon[server],type=web-request-mon,name=test-app-0/%s/server/requestcount#count</mbean>
+      <type>counter</type>
+      <unit>none</unit>
+      <displayName>Count of requests processde by module</displayName>
+      <description>Cumulative number of requests processed so far</description>
+    </metadata>
+    <metadata>
+      <tags>
+        <tag>
+          <name>module</name>
+          <value>%s</value>
+        </tag>
+      </tags>
+      <name>http.server.requests.error.count</name>
+      <mbean>amx:pp=/mon/server-mon[server],type=web-request-mon,name=test-app-0/%s/server/errorcount#count</mbean>
+      <type>counter</type>
+      <unit>none</unit>
+      <displayName>Count of requests failed during processing by module</displayName>
+      <description>Cumulative value of the error count, with error count representing the number of cases where the response code was greater than or equal to 400</description>
+    </metadata>
+    <metadata>
+      <name>http.server.requests.accessdenied.count</name>
+      <mbean>amx:pp=/mon/server-mon[server],type=request-mon,name=http-service/server/request/count403#count</mbean>
+      <type>counter</type>
+      <unit>none</unit>
+      <displayName>Count of requests failed during processing by module</displayName>
+      <description>Cumulative value of the 403 error count</description>
+    </metadata>
+    <metadata>
+      <name>http.server.requests.unauthenticated.count</name>
+      <mbean>amx:pp=/mon/server-mon[server],type=request-mon,name=http-service/server/request/count401#count</mbean>
+      <type>counter</type>
+      <unit>none</unit>
+      <displayName>Count of requests without login</displayName>
+      <description>Cumulative value of the 401 error count</description>
+    </metadata>
+    <metadata>
+      <name>http.server.requests.applicationerror.count</name>
+      <mbean>amx:pp=/mon/server-mon[server],type=request-mon,name=http-service/server/request/count5xx#count</mbean>
+      <type>counter</type>
+      <unit>none</unit>
+      <displayName>Count of application failures</displayName>
+      <description>Cumulative value of the 500 error count</description>
+    </metadata>
+
+    <metadata>
+      <tags>
+        <tag>
+          <name>module</name>
+          <value>%s</value>
+        </tag>
+      </tags>
+      <name>thread.pool.thread.count</name>
+      <mbean>amx:pp=/mon/server-mon[server],type=thread-pool-mon,name=network/%s/thread-pool/currentthreadcount#count</mbean>
+      <type>gauge</type>
+      <unit>none</unit>
+      <displayName>Count of active threads</displayName>
+      <description>Provides the number of request processing threads currently in the listener thread pool</description>
+    </metadata>
+    <metadata>
+      <tags>
+        <tag>
+          <name>module</name>
+          <value>%s</value>
+        </tag>
+      </tags>
+      <name>thread.pool.thread.count.max</name>
+      <mbean>amx:pp=/mon/server-mon[server],type=thread-pool-mon,name=network/%s/thread-pool/maxthreads#count</mbean>
+      <type>gauge</type>
+      <unit>none</unit>
+      <displayName>Maximum of active threads</displayName>
+      <description>Maximum number of threads allowed in the thread pool</description>
+    </metadata>
+
+
+    <metadata>
+      <name>http.connection.queue.http.numconnopen</name>
+      <mbean>amx:pp=/mon/server-mon[server],type=connection-queue-mon,name=network//connection-queue/countopenconnections#count</mbean>
+      <type>gauge</type>
+      <unit>none</unit>
+      <displayName>numconnopenPool</displayName>
+      <description>The number of open/active http connections</description>
+    </metadata>
+    <metadata>
+      <name>http.connection.pool.http.numconn</name>
+      <mbean>amx:pp=/mon/server-mon[server],type=connection-queue-mon,name=network//connection-queue/counttotalqueued#count</mbean>
+      <type>counter</type>
+      <unit>none</unit>
+      <displayName>Count of connections handled</displayName>
+      <description>Total Number of connections handled</description>
+    </metadata>
+
+</vendor></config>
