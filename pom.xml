@@ -14,6 +14,7 @@
     <module>core</module>
     <module>bug</module>
     <module>login</module>
+    <module>job</module>
     <module>static</module>
     <module>ear</module>
   </modules>
