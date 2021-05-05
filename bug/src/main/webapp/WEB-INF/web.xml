@@ -19,7 +19,16 @@
     <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
     <load-on-startup>1</load-on-startup>
   </servlet>
+  <servlet>
+    <servlet-name>JSR107</servlet-name>
+    <servlet-class>cz.i.jsr107.Jsr107IntegrationBugServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
 
+  <servlet-mapping>
+    <servlet-name>JSR107</servlet-name>
+    <url-pattern>/jsr107</url-pattern>
+  </servlet-mapping>
   <servlet-mapping>
     <servlet-name>Faces Servlet</servlet-name>
     <url-pattern>*.xhtml</url-pattern>

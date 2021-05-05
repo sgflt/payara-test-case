@@ -17,6 +17,7 @@
     <module>job</module>
     <module>static</module>
     <module>ear</module>
+    <module>bug-lib</module>
   </modules>
 
   <properties>

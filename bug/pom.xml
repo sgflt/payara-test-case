@@ -18,5 +18,10 @@
       <artifactId>core</artifactId>
        <scope>provided</scope>
     </dependency>
+    <dependency>
+      <groupId>cz.i</groupId>
+      <artifactId>bug-lib</artifactId>
+      <version>0</version>
+    </dependency>
   </dependencies>
 </project>
