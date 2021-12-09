@@ -64,6 +64,17 @@
       <groupId>com.hazelcast</groupId>
       <artifactId>hazelcast</artifactId>
     </dependency>
+
+    <dependency>
+      <groupId>io.github.openfeign</groupId>
+      <artifactId>feign-core</artifactId>
+      <version>11.7</version>
+    </dependency>
+    <dependency>
+      <groupId>io.github.openfeign</groupId>
+      <artifactId>feign-okhttp</artifactId>
+      <version>11.7</version>
+    </dependency>
   </dependencies>
 
   <dependencyManagement>
@@ -117,7 +128,7 @@
       <dependency>
         <groupId>fish.payara.api</groupId>
         <artifactId>payara-bom</artifactId>
-        <version>5.2020.7</version>
+        <version>5.2021.9</version>
         <scope>import</scope>
         <type>pom</type>
       </dependency>
